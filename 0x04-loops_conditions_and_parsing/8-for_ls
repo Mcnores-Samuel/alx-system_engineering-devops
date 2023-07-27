@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# displays:
+# The content of the current directory
+# In a list format
+# Where only the part of the name after the first dash is displayed (refer to the example)
+
+for file in *
+do
+	if [ -f "$file" ] && [ "$file" != "README.md" ]
+	then
+		echo "$file" | cut -d '-' -f2-
+	fi
+done
