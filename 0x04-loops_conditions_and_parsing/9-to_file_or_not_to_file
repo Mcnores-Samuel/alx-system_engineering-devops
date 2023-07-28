@@ -14,6 +14,7 @@ count=0
 
 for file in *
 do
+	count=$((count + 1))
 	if [ -e "$file" ] && [ "$file" == "school" ]
 	then
 		echo "school file exists"
@@ -28,10 +29,9 @@ do
 			echo "school is a regular file"
 		fi
 		exit 0
-	elif [ "$count" -eq "$all_file" ]
+	elif [ $count -eq "$all_file" ]
 	then
 		echo "school file does not exist"
 		exit 0
 	fi
-	count=$((count + 1))
 done
