@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# kills the process 7-highlander.
+
+process="7-highlander"
+process_id=$(pgrep -f "$process")
+kill -SIGKILL "$process_id"
