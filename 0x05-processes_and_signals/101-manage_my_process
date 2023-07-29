@@ -18,11 +18,12 @@
 # if any other argument or no argument is passed
 
 input="$1"
+process_id="$(pgrep -f /manage_my_process)"
 
 if [ "$input" == "start" ]
 then
 	./manage_my_process &
-	pgrep -f /manage_my_process > "/var/run/my_process.pid"
+	echo "$process_id" > "/var/run/my_process.pid"
 	echo "manage_my_process started"
 elif [ "$input" == "stop" ]
 then
@@ -34,7 +35,7 @@ then
 	kill "$(pgrep -f /manage_my_process)"
 	./manage_my_process &
 	rm "/var/run/my_process.pid"
-	pgrep -f /manage_my_process > "/var/run/my_process.pid"
+	echo "$process_id" > "/var/run/my_process.pid"
 	echo "manage_my_process restarted"
 else
 	echo "Usage: manage_my_process {start|stop|restart}"
