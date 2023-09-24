@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# ssh configuration directives on how should an ssh connection be established
+Host *
+   IdentityFile ~/.ssh/school
+   PasswordAuthentication no 
