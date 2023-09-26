@@ -6,5 +6,5 @@
 file {
   '~/.ssh/config':
   ensure  => present,
-  content => 'Host *\n\tIdentityFile ~/.ssh/school\nPubkeyAuthenticarion no'
+  content => "Host *\n\tIdentityFile ~/.ssh/school\nPubkeyAuthentication no"
 }
