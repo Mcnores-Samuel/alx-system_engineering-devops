@@ -3,8 +3,18 @@
 #   private key ~/.ssh/school
 #   configured to refuse to authenticate using a password
 
-file {
-  '/etc/ssh/ssh_config':
-  ensure  => present,
-  content => "Host *\n   IdentityFile ~/.ssh/school\n   passwordAuthentication no\n"
+class ssh_config {
+  file {
+    '/etc/ssh/ssh_config':
+    path => '/etc/ssh/ssh_config',
+    ensure => present,
+    line => "IdentityFile ~/.ssh/school"
+  }
+
+  file {
+    '/etc/ssh/sshd_config':
+    path => '/etc/ssh/sshd_config',
+    ensure => present,
+    line => "PasswordAuthentication no"
+  }
 }
