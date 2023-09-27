@@ -1,3 +1,5 @@
+# configures nginx to serve a simple page and a 404 page
+# and to redirect /redirect_me to www.google.com
 $nginx = 'nginx'
 
 package { $nginx:
