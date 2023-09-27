@@ -4,7 +4,7 @@
 #   configured to refuse to authenticate using a password
 
 file {
-  '~/.ssh/config':
+  '/etc/ssh/ssh_config':
   ensure  => present,
   content => "Host *\n   IdentityFile ~/.ssh/school\n   passwordAuthentication no\n"
 }
