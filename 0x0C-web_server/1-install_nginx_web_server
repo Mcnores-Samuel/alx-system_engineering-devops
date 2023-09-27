@@ -2,16 +2,20 @@
 # Bash script that sets up web servers for the deployment of web_static
 # Requirements:
 #         Install Nginx if it not already installed
-
 sudo apt-get update
-sudo apt-get -y install nginx
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Hello World!" > /etc/nginx/html/index.html
+if [ ! -x /usr/bin/nginx ]; then 
+     sudo apt-get -y install nginx
+fi
+
+if [ ! -d /var/www/nginx-html ]; then
+     sudo mkdir -p /var/www/nginx-html
+     touch /var/www/nginx-html/index.html
+     echo "Hello World!" > /var/www/nginx-html/index.html
+fi
 printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
-     root        /etc/nginx/html;
+     root        /var/www/nginx-html;
      index       index.html index.htm;
 }
 " > /etc/nginx/sites-available/default
