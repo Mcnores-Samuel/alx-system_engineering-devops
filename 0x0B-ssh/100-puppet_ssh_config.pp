@@ -2,12 +2,12 @@
 # Requirements:
 #   private key ~/.ssh/school
 #   configured to refuse to authenticate using a passwor
-file_line { 'Declare_identity_file':
+file_line { 'identity_file':
   path    => '/etc/ssh/ssh_config',
   line    => 'IdentityFile ~/.ssh/school',
 }
 
-file_line { 'Turn_off_passwd_auth':
+file_line { 'passwd_auth':
   path    => '/etc/ssh/ssh_config',
   line    => 'PasswordAuthentication no',
 }
