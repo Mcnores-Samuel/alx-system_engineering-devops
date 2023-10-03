@@ -2,6 +2,18 @@
 # Configure Nginx so that its HTTP response contains a custom header (on web-01 and web-02)
 # The name of the custom HTTP header must be X-Served-By
 # The value of the custom HTTP header must be the hostname of the server Nginx is running on
+sudo apt-get update
+if [ ! -x /usr/bin/nginx ]; then 
+     sudo apt-get -y install nginx
+fi
+
+if [ ! -d /var/www/nginx-html ]; then
+     sudo mkdir -p /var/www/nginx-html
+fi
+
+touch /var/www/nginx-html/index.html
+echo "Hello World!" > /var/www/nginx-html/index.html
+
 printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
