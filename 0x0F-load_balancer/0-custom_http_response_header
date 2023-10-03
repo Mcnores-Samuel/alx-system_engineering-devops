@@ -14,6 +14,11 @@ fi
 touch /var/www/nginx-html/index.html
 echo "Hello World!" > /var/www/nginx-html/index.html
 
+if [ ! -f /var/www/nginx-html/404.html ]; then
+    touch /var/www/nginx-html/404.html
+    echo -e "Ceci n'est pas une page" > /var/www/nginx-html/404.html
+fi
+
 printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
