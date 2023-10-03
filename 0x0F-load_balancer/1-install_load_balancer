@@ -9,7 +9,7 @@ apt-get install -y --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.8
 apt-get install -y haproxy=2.8.\*
 
-echo "
+printf %s "
 frontend nginx_webservers
     bind *:80
     mode http
@@ -17,7 +17,7 @@ frontend nginx_webservers
 
 backend nginx_webservers
     balance roundrobin
-    server 224065-web-01 100.25.45.230:80
-    server 224065-web-02 54.175.100.32:80
+    server 224065-web-01 100.25.45.230:80 check
+    server 224065-web-02 54.175.100.32:80 check
 " >> /etc/haproxy/haproxy.cfg
 service haproxy restart
