@@ -39,7 +39,7 @@ file {
       listen [::]:80 default_server;
       root /var/www/nginx-html;
       index index.html index.htm;
-      add_header X-Served-By $HOSTNAME;
+      add_header X-Served-By ${hostname};
 
       location /redirect_me {
         return 301 http://www.google.com;
