@@ -6,39 +6,18 @@
 #       Make sure that HAproxy can be managed via an init script
 apt-get install -y --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.8
-apt-get update
-apt-get install -y haproxy=2.8.\*
+apt-get update -y
+apt-get install -y haproxy
 
-echo "ENABLED=1" >> /etc/default/haproxy
-mv /etc/haproxy/haproxy.cfg{,.original}
-touch /etc/haproxy/haproxy.cfg
-
-printf %s "global
-    log 127.0.0.1 local0 notice
-    maxconn 2000
-    user haproxy
-    group haproxy
-
-defaults
-    log     global
-    mode    http
-    option  httplog
-    option  dontlognull
-    retries 3
-    option redispatch
-    timeout connect  5000
-    timeout client  10000
-    timeout server  10000
-
-listen nginx_loadbalancer
-    bind 0.0.0.0:80
+printf %s "
+frontend nginx_webservers
+    bind *:80
     mode http
-    stats enable
-    stats uri /haproxy?stats
+    default_backend nginx_webservers_backend
+
+backend nginx_webservers_backend
     balance roundrobin
-    option httpclose
-    option forwardfor
     server 224065-web-01 100.25.45.230:80 check
     server 224065-web-02 54.175.100.32:80 check
 " >> /etc/haproxy/haproxy.cfg
-service haproxy start
+service haproxy restart
