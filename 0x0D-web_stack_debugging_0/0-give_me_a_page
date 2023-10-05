@@ -2,6 +2,5 @@
 # Starts a web server and displays Hello Holberton when curling localhost:8000
 # This script is used for debugging purposes
 # Requirements:
-# 100% automation and not interactive\
-echo "ServerName localhost" >> /etc/apache2/apache2.conf
-sudo /etc/init.d/apache2 restart
+# 100% automation and not interactive
+/etc/init.d/apache2 restart
