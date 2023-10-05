@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Starts a web server and displays Hello Holberton when curling localhost:8000
+# This script is used for debugging purposes
+# Requirements:
+# 100% automation and not interactive
+sudo /etc/init.d/apache2 restart
