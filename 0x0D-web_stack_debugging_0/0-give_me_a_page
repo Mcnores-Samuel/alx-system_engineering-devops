@@ -3,4 +3,4 @@
 # This script is used for debugging purposes
 # Requirements:
 # 100% automation and not interactive
-sudo /etc/init.d/apache2 restart
+sudo /etc/init.d/apache2 start
