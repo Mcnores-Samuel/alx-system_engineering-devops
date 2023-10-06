@@ -3,10 +3,9 @@
 # Requirements:
 #       The page must return a 404 HTTP response code
 #       The page must contain the string Ceci n'est pas une page
-if [ ! -f /var/www/nginx-html/404.html ]; then
-    touch /var/www/nginx-html/404.html
-    echo -e "Ceci n'est pas une page\n" > /var/www/nginx-html/404.html
-fi
+
+touch /var/www/nginx-html/404.html
+echo "Ceci n'est pas une page" > /var/www/nginx-html/404.html
 
 printf %s "server {
      listen      80 default_server;
