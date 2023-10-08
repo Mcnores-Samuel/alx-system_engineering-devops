@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # fixes the port 80 connection refused issue and kill the nginx master process
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx restart
+service nginx start
 kill "$(pgrep 'nginx' | head -1)"
