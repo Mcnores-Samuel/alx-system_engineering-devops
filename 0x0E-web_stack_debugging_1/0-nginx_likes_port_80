@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script automates the fix of nginx not listening at port 80
 sudo apt update
- if [ ! -x /usr/bin/nginx ] || [ ! -x /bin/nginx ] || [ ! -x /usr/sbin/nginx ];then
+ if [ ! -x /usr/sbin/nginx ];then
 	 sudo apt install -y nginx
  fi
  sudo /etc/init.d/nginx restart
