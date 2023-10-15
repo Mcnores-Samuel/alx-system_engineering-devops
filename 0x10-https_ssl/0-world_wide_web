@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Displays information of all subdomain of a domain name
+
+dig_report() {
+	result=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -1)
+	echo "$2 $result" | awk '{print "The subdomain "$1" is a "$5" record and points to "$6""}'
+}
+
+if [ $# == 1 ]; then
+	dig_report "$1" "www"
+	dig_report "$1" "lb-01"
+	dig_report "$1" "web-01"
+	dig_report "$1" "web-02"
+elif [ $# == 2 ]; then
+	dig_report "$1" "$2"
+fi
