@@ -8,8 +8,8 @@ if __name__ == "__main__":
     todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
 
     obj = {}
-    value_list = []
     for user in users:
+        value_list = []
         for todo in todos:
             if todo.get('userId') == user.get('id'):
                 dict_d = {}
