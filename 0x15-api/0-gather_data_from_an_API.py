@@ -16,10 +16,10 @@ if __name__ == "__main__":
     user_todos = user_todos.json()
 
     for todo in user_todos:
-        if todo['completed']:
+        if todo.get('completed'):
             count += 1
     print("Employee {} is done with tasks({}/{}):".format(
-        user_data[0]['username'], count, len(user_todos)))
+        user_data[0].get('username'), count, len(user_todos)))
     for todo in user_todos:
-        if todo['completed']:
+        if todo.get('completed'):
             print("\t {}".format(todo.get('title')))
