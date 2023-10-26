@@ -22,4 +22,4 @@ if __name__ == "__main__":
         user_data[0]['username'], count, len(user_todos)))
     for todo in user_todos:
         if todo['completed']:
-            print("\t {}".format(todo['title']))
+            print("\t {}".format(todo.get('title')))
