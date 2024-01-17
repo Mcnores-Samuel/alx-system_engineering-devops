@@ -1,6 +1,6 @@
-# Fixes bad `phpp` extensions to `php` in the WordPress file `wp-settings.php`.
+# Fixes a bad segment of a web server.
 
-exec { 'fix-wordpress':
+exec { 'trace-and-fix':
   command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
   path    => '/usr/local/bin/:/bin/'
 }
