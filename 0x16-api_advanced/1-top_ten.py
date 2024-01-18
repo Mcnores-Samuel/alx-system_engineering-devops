@@ -14,4 +14,9 @@ def top_ten(subreddit):
         print("None")
         return
     results = response.json().get("data").get("children")
-    [print(c.get("data").get("title")) for c in results.get("children")]
+    for post in results:
+        print(post.get("data").get("title"))
+
+
+if __name__ == "__main__":
+    top_ten("programming")
