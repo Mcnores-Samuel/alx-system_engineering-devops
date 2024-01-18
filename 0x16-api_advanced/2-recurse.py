@@ -4,7 +4,9 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=""):
-    """Function to query a list of all hot posts on a given Reddit subreddit."""
+    """Function to query a list of all hot posts
+    on a given Reddit subreddit.
+    """
     url = "https://www.reddit.com/r/{}/hot.json?after={}".format(subreddit,
                                                                  after)
     headers = {
